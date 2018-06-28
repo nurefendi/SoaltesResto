@@ -1,5 +1,5 @@
 <?php
-class Pelayan extends CI_Controller {
+class Kasir extends CI_Controller {
 
 	public function __construct() {
 		parent::__construct();
@@ -7,23 +7,22 @@ class Pelayan extends CI_Controller {
 
 		if ($this->session->userdata('userLevel')=="") {
 			redirect('login');
-		}elseif ($this->session->userdata('userLevel')=='2') {
-			redirect('kasir/kasir');
+		}elseif ($this->session->userdata('userLevel')=='1') {
+			redirect('kasir/pelayan');
 		}
 		$this->load->helper('text'); 
 
 	}
 
-	public function index() {
+	public function index(){
 		$data['userID'] = $this->session->userdata('userID');
 		$data['userName'] = $this->session->userdata('userName');
 		$data['userEmail'] = $this->session->userdata('userEmail');
 		$data['userLevel'] = $this->session->userdata('userLevel');
 		$data['lastActivity'] = $this->session->userdata('lastActivity');
-		$data['loadCotent'] = 'pelayan/content_home';
+		$data['loadCotent'] = 'kasir/content_home';
 
-		$this->load->view('pelayan/home', $data);
-
+		$this->load->view('kasir/home', $data);
 	}
 
 	public function logOut() {
@@ -35,7 +34,16 @@ class Pelayan extends CI_Controller {
 		session_destroy();
 		redirect('login');
 	}
+	public function profile(){
+		$data['userID'] = $this->session->userdata('userID');
+		$data['userName'] = $this->session->userdata('userName');
+		$data['userEmail'] = $this->session->userdata('userEmail');
+		$data['userLevel'] = $this->session->userdata('userLevel');
+		$data['loadCotent'] = 'kasir/content_profil';
 
+
+		$this->load->view('kasir/home', $data);
+	}
 
 	public function productMakanan(){
 		$this->load->model('m_product');
@@ -43,12 +51,11 @@ class Pelayan extends CI_Controller {
 		$data['userID'] = $this->session->userdata('userID');
 		$data['userName'] = $this->session->userdata('userName');
 		$data['userEmail'] = $this->session->userdata('userEmail');
-		$data['userLevel'] = $this->session->userdata('userLevel');
-		
-		$data['loadCotent'] = 'pelayan/content_makanan';
+		$data['userLevel'] = $this->session->userdata('userLevel');	
+		$data['loadCotent'] = 'kasir/content_makanan';
 
 
-		$this->load->view('pelayan/home', $data);
+		$this->load->view('kasir/home', $data);
 		
 	}
 
@@ -58,13 +65,10 @@ class Pelayan extends CI_Controller {
 		$data['userID'] = $this->session->userdata('userID');
 		$data['userName'] = $this->session->userdata('userName');
 		$data['userEmail'] = $this->session->userdata('userEmail');
-		$data['userLevel'] = $this->session->userdata('userLevel');
-		
-		$data['loadCotent'] = 'pelayan/content_minuman';
+		$data['userLevel'] = $this->session->userdata('userLevel');		
+		$data['loadCotent'] = 'kasir/content_minuman';
 
-
-		$this->load->view('pelayan/home', $data);
-		
+		$this->load->view('kasir/home', $data);
 	}
 
 	public function transaction(){
@@ -72,23 +76,10 @@ class Pelayan extends CI_Controller {
 		$data['userName'] = $this->session->userdata('userName');
 		$data['userEmail'] = $this->session->userdata('userEmail');
 		$data['userLevel'] = $this->session->userdata('userLevel');
-		$data['loadCotent'] = 'pelayan/content_transaksi';
-		$this->load->view('pelayan/home', $data);
+		$data['loadCotent'] = 'kasir/content_transaksi';
+		$this->load->view('kasir/home', $data);
 	}
-
-	public function profile(){
-		$data['userID'] = $this->session->userdata('userID');
-		$data['userName'] = $this->session->userdata('userName');
-		$data['userEmail'] = $this->session->userdata('userEmail');
-		$data['userLevel'] = $this->session->userdata('userLevel');
-		$data['loadCotent'] = 'pelayan/content_profil';
-
-
-		$this->load->view('pelayan/home', $data);
-	}
-
-
-
 
 }
+
 ?>

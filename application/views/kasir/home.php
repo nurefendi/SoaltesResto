@@ -41,14 +41,14 @@
               <div class="menu_section">
                 <h3>General</h3>
                 <ul class="nav side-menu">
-                   <li><a href="<?php echo base_url('index.php/pelayan/pelayan'); ?>"><i class="fa fa-home"></i> Home </a></li>
+                   <li><a href="<?php echo base_url('index.php/kasir/kasir'); ?>"><i class="fa fa-home"></i> Home </a></li>
                   <li><a><i class="fa fa-cutlery"></i> Product <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="<?php echo base_url('index.php/pelayan/pelayan/productMakanan'); ?>">Makanan</a></li>
-                      <li><a href="<?php echo base_url('index.php/pelayan/pelayan/productMinuman'); ?>">Minuman</a></li>                      
+                      <li><a href="<?php echo base_url('index.php/kasir/kasir/productMakanan'); ?>">Makanan</a></li>
+                      <li><a href="<?php echo base_url('index.php/kasir/kasir/productMinuman'); ?>">Minuman</a></li>                      
                     </ul>
                   </li>  
-                  <li><a href="<?php echo base_url('index.php/pelayan/pelayan/transaction'); ?>"><i class="fa fa-area-chart"></i> Transaction</a></li>                
+                  <li><a href="<?php echo base_url('index.php/kasir/kasir/transaction'); ?>"><i class="fa fa-area-chart"></i> Transaction</a></li>                
                 </ul>
               </div>
             </div>
@@ -75,9 +75,9 @@
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li><a href="<?php echo base_url('index.php/pelayan/pelayan/profile'); ?>"> Profile</a></li>
+                    <li><a href="<?php echo base_url('index.php/kasir/kasir/profile'); ?>"> Profile</a></li>
                     <li><a href="javascript:;">Help</a></li>
-                    <li><a href="<?php echo base_url('index.php/pelayan/pelayan/logOut'); ?>"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                    <li><a href="<?php echo base_url('index.php/kasir/kasir/logOut'); ?>"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
                   </ul>
                 </li>
               </ul>
