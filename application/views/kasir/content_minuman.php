@@ -22,11 +22,7 @@
 <?php foreach (json_decode($product) as $pro) {?> 
     <div class="col-md-3 col-xs-12 widget widget_tally_box">
       <div class="x_panel ui-ribbon-container fixed_height_390">
-        <div class="ui-ribbon-wrapper">
-          <div class="ui-ribbon">
-            30% Off
-          </div>
-        </div>
+       
         <div class="x_content">
 
           <div style="text-align: center; margin-bottom: 17px">
@@ -41,8 +37,11 @@
           <div class="divider"></div>
 
           <p><?php echo $pro->productDescription; ?></p>
+          <?php if ($pro->productStok == '0') { ?>
+            <a href="javascript:void(0);" class="btn btn-danger btn-block" role="button">Sold Out!</a>
+          <?php }else{ ?>
            <a href="javascript:void(0);" class="btn btn-success btn-block" role="button">Select</a>
-
+         <?php }?>
         </div>
 
       </div>

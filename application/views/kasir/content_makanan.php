@@ -19,36 +19,35 @@
 
     <div class="clearfix"></div>
 
-<?php foreach (json_decode($product) as $pro) {?> 
-    <div class="col-md-3 col-xs-12 widget widget_tally_box">
-      <div class="x_panel ui-ribbon-container fixed_height_390">
-        <div class="ui-ribbon-wrapper">
-          <div class="ui-ribbon">
-            30% Off
-          </div>
-        </div>
-        <div class="x_content">
+    <?php foreach (json_decode($product) as $pro) {?> 
+      <div class="col-md-3 col-xs-12 widget widget_tally_box">
+        <div class="x_panel ui-ribbon-container fixed_height_390">
+          
+          <div class="x_content">
 
-          <div style="text-align: center; margin-bottom: 17px">
-            <span class="chart" data-percent="86">
-              <span class="percent"></span>
-            </span>
-          </div>
+            <div style="text-align: center; margin-bottom: 17px">
+              <span class="chart" data-percent="86">
+                <span class="percent"></span>
+              </span>
+            </div>
 
-          <h3 class="name_title"><?php echo $pro->productName; ?></h3>
-          <h4 class="name_title">Rp. <?php echo $pro->productPrice; ?></h4>
+            <h3 class="name_title"><?php echo $pro->productName; ?></h3>
+            <h4 class="name_title">Rp. <?php echo $pro->productPrice; ?></h4>
 
-          <div class="divider"></div>
+            <div class="divider"></div>
 
-          <p><?php echo $pro->productDescription; ?></p>
-           <a href="javascript:void(0);" class="btn btn-success btn-block" role="button">Select</a>
+            <p><?php echo $pro->productDescription; ?></p>
+            <?php if ($pro->productStok == '0') { ?>
+              <a href="javascript:void(0);" class="btn btn-danger btn-block" role="button">Sold Out!</a>
+            <?php }else{ ?>
+             <a href="javascript:void(0);" class="btn btn-success btn-block" role="button">Select</a>
+           <?php }?>
+         </div>
 
-        </div>
+       </div>
 
-      </div>
+     </div>
+   <?php } ?>
 
-    </div>
-<?php } ?>
-
-  </div>
+ </div>
 </div>
