@@ -12,17 +12,21 @@ class M_orders extends CI_Model{
 		return true;
 	}
 
+	#fungsi untuk mengabil data order yang setatusnya masih on proses
 	public function showActiveOrder($status='0'){
 		$this->db->select('*')->where('status', $status);
 		$query = $this->db->get('soaltes_orders');
 		return json_encode($query->result_array());
 	}
 
+
+	# fungsi untuk menjumlahkan danmengambil data order berdasarkan id detail order
 	public function sumorder($id){
 		$query = $this->db->query("SELECT SUM(od.ordersQty) AS sumqty, SUM(od.subtotal) AS sumtotal FROM soaltes_orders o INNER JOIN soaltes_orders_detail od ON o.ordersIDDetails = od.ordersIDDetails WHERE o.ordersIDDetails = '$id' ");
 		return $query->result_array();
 	}
 
+	#fungsi untuk menghitung jumlah order yang masih aktiv
 	public function countOrder(){
 		$query = $this->db->query("SELECT COUNT(*) AS ttorder FROM soaltes_orders WHERE status = '0'");
 		return $query->result_array();

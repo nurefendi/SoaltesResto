@@ -42,11 +42,14 @@ class Login extends CI_Controller {
 					$this->session->set_userdata($sess_data); //set session user level
 				}
 				if ($this->session->userdata('userLevel')=='1') {
+				helper_log("login", "Melakukan Login Sistem");					
 					redirect('pelayan/pelayan');
 				//echo "<script>alert('Kasir');history.go(-1);</script>";
 				}
 				elseif ($this->session->userdata('userLevel')=='2') {
 				//echo "<script>alert('pelayan');history.go(-1);</script>";
+
+					helper_log("login", "Melakukan Login Sistem");
 					redirect('kasir/kasir');
 				}		
 			}else {

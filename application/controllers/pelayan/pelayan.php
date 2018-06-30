@@ -6,6 +6,8 @@ class Pelayan extends CI_Controller {
 		$this->load->model('m_users');
 		$this->load->model('m_product');
 		$this->load->model('m_orders');
+		$this->load->model('m_transaksi');
+		
 		
 
 		# session untuk validasi user
@@ -19,6 +21,7 @@ class Pelayan extends CI_Controller {
 	}
 
 	public function index() {
+
 		$data['userID'] = $this->session->userdata('userID');
 		$data['userName'] = $this->session->userdata('userName');
 		$data['userEmail'] = $this->session->userdata('userEmail');
@@ -34,11 +37,13 @@ class Pelayan extends CI_Controller {
 	}
 
 	public function logOut() {
+		helper_log("logout", "Melakukan Log Out");	
 		$this->session->unset_userdata('userID');
 		$this->session->unset_userdata('userName');
 		$this->session->unset_userdata('userEmail');
 		$this->session->unset_userdata('userLevel');
 		$this->session->unset_userdata('lastActivity');
+
 		session_destroy();
 		redirect('login');
 	}
@@ -82,9 +87,12 @@ class Pelayan extends CI_Controller {
 	public function transaction(){
 		$data['countorder'] = $this->m_orders->countOrder();
 		$data['userID'] = $this->session->userdata('userID');
+
 		$data['userName'] = $this->session->userdata('userName');
 		$data['userEmail'] = $this->session->userdata('userEmail');
 		$data['userLevel'] = $this->session->userdata('userLevel');
+		$data['report'] = $this->m_transaksi->lihatTransaksi($this->session->userdata('userID'));
+
 		$data['loadCotent'] = 'pelayan/content_transaksi';
 		$this->load->view('pelayan/home', $data);
 	}

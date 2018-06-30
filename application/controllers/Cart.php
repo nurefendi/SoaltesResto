@@ -16,6 +16,7 @@ class Cart extends CI_Controller{
 		);
 		$this->cart->insert($data);
 		echo $this->show_cart(); //tampilkan cart setelah added
+		
 
 	}
 
@@ -133,7 +134,8 @@ function show_cartmodal(){ //Fungsi untuk menampilkan Cart di modal
 		$this->load->model('m_product');
 		$this->load->model('m_orders');
 		$kodedetails = $this->m_product->codeDetail();
-		$add['ordersID'] = $this->m_product->create_code();
+		$ordersid = $this->m_product->create_code();
+		$add['ordersID'] = $ordersid; 
 		$add['ordersIDDetails'] = $kodedetails;
 		$add['ordersTableNumber'] = $this->input->post('nomeja');
 		$add['userID'] = $this->session->userdata('userID');
@@ -148,6 +150,7 @@ function show_cartmodal(){ //Fungsi untuk menampilkan Cart di modal
 		$adddetail = implode(',', $detail);
 
 		if ($hasil = $this->m_orders->create($add) && $hasil = $this->m_orders->createDetailOrder($adddetail)) {
+			helper_log("add", "Menambah Pesanan Pada No. Meja :".$this->input->post('nomeja')." dan Id Pesanan :".$ordersid);
 			$this->cart->destroy();
 			$this->session->set_flashdata('success', 'User successfully generated.');
 			redirect(base_url());
